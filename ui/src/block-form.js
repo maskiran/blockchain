@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Input, Space, Spin } from 'antd'
+import { Button, Form, Input, Space } from 'antd'
 import Block from './block'
 
 export default class BlockForm extends React.Component {
@@ -42,7 +42,6 @@ export default class BlockForm extends React.Component {
                         disabled={buttonDisabled}>
                         Mine Block
                     </Button>
-                    {this.state.miningStarted && <Spin size="middle" />}
                 </Space>
             </Form.Item>
         </Form>

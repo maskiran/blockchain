@@ -1,6 +1,6 @@
 import React from "react";
 import 'antd/dist/antd.min.css';
-import { Layout, Space, Divider, Typography, Avatar, Button } from "antd";
+import { Layout, Space, Divider, Typography, Avatar } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons"
 import ObjectTable from 'react-antd-object-table'
 import Block from "./block";
@@ -76,7 +76,8 @@ export default class App extends React.Component {
     }
 
     prepareToShowAddBlockForm = () => {
-        this.setState({ addBlockVisible: true, blockDetails: {} })
+        this.setState({ addBlockVisible: true })
+        this.selectBlock(0)
     }
 
     renderAddBlockForm = () => {
