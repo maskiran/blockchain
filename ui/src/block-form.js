@@ -18,8 +18,8 @@ export default class BlockForm extends React.Component {
         this.setState({ miningStarted: true })
         var block = new Block(this.props.index, this.props.prevHash,
             formData.data, formData.difficulty)
-        this.setState({ miningStarted: false })
         block.mineBlock()
+        this.setState({ miningStarted: false })
         this.props.onSubmit(block)
     }
 
