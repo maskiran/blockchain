@@ -15,10 +15,9 @@ class Block(object):
         self.mining_duration = 0
 
     def mine(self):
-        now = arrow.get().to('local')
-        print(f"Mining block at height {self.height} at {now}, ",
+        start = arrow.get().to('local')
+        print(f"Mining block at height {self.height} at {start}, ",
               end='', flush=True)
-        start = arrow.now()
         while True:
             hash = self.generate_hash()
             # check if the number of 0s in the hash matches the difficulty
