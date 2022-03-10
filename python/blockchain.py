@@ -51,7 +51,7 @@ class Blockchain():
                 block.difficulty,
                 block.mining_duration
             ])
-        print(tabulate.tabulate(data, headers=headers))
+        print(tabulate.tabulate(data, headers=headers, tablefmt="fancy_grid", floatfmt="f"))
 
     def is_valid(self):
         prev_block = self.chain[0]
