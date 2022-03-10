@@ -1,5 +1,6 @@
+import datetime
 import hashlib
-import arrow
+import math
 
 
 class Block(object):
@@ -11,27 +12,27 @@ class Block(object):
         self.difficulty: int = difficulty
         self.hash: str = ""
         self.nonce: int = 0
-        self.timestamp: int = arrow.now().timestamp()
+        self.timestamp: int = math.ceil(datetime.datetime.now().timestamp())
         self.mining_duration = 0
 
     def mine(self):
-        start = arrow.get().to('local')
-        print(f"Mining block at height {self.height} at {start}, ",
+        start_time = datetime.datetime.now()
+        print(f"Mining block at height {self.height} at {start_time}, ",
               end='', flush=True)
         while True:
             hash = self.generate_hash()
             # check if the number of 0s in the hash matches the difficulty
             if hash[0:self.difficulty] == '0' * self.difficulty:
                 self.hash = hash
-                end = arrow.now()
                 break
             else:
                 self.nonce += 1
             if self.nonce >= 2 ** 32:
                 # change the timestamp and restart the nonce
-                self.timestamp = arrow.now().timestamp()
+                self.timestamp = math.ceil(datetime.datetime.now().timestamp())
                 self.nonce = 0
-        self.mining_duration = (end - start).total_seconds()
+        end_time = datetime.datetime.now()
+        self.mining_duration = (end_time - start_time).total_seconds()
         print(f"Duration {self.mining_duration}")
 
     def _print_hash(self, hash):
