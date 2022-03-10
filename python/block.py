@@ -3,7 +3,7 @@ import hashlib
 import math
 
 
-class Block(object):
+class Block:
     def __init__(self, height: int, prev_hash: str, data: str,
                  difficulty: int = 1):
         self.height: int = height
